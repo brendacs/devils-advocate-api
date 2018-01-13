@@ -1,3 +1,5 @@
+export let results = {};
+
 export const calcScore = (latestAnswered) => {
 
   /* econ - 1 space suffix
@@ -7,7 +9,7 @@ export const calcScore = (latestAnswered) => {
    *   soc hate speech - 1 space prefix
    * nation - 4 spaces suffix
    * part - 5 spaces suffix */
-
+  
   let email;
   let econScore;
   let doveScore;
@@ -17,9 +19,8 @@ export const calcScore = (latestAnswered) => {
   let action;
   let vote;
   let scores;
-
-  let results = {}
   let scoreString = '';
+
   for (let i = 0; i < latestAnswered.length; i++) {
     econScore = 0;
     doveScore = 0;

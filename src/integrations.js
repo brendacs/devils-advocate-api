@@ -1,6 +1,7 @@
 import express from 'express';
 import { requestFormResponse } from './typeform/getFormResponses.js';
-import { requestMailResponse } from './mailchimp/getMailResponses.js';
+import { requestGetListResponse } from './mailchimp/getLists.js';
+import { requestAddListMember } from './mailchimp/addListMembers.js';
 
 const app = express();
 
@@ -12,8 +13,12 @@ const getScore = () => {
   requestFormResponse();
 }
 
-const getMailData = () => {
-  requestMailResponse();
+const getListData = () => {
+  requestGetListResponse();
 }
 
-getMailData();
+const postListMember = () => {
+  requestAddListMember();
+}
+
+getScore();

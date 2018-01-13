@@ -1,6 +1,16 @@
 import dotenv from 'dotenv';
 dotenv.load();
 
+import {
+  econListId,
+  doveListId,
+  socListId,
+  nationListId,
+  partListId,
+  actionListId,
+  voteListId
+} from './mailchimp/getLists.js';
+
 const FORM_API_KEY = process.env.FORM_API_KEY;
 const FORM_ACCESS_TOKEN = process.env.FORM_ACCESS_TOKEN;
 
@@ -17,11 +27,22 @@ export const formSettings = {
   }
 }
 
-export const mailSettings = {
+export const getListSettings = {
   "async": true,
   "crossDomain": true,
-  "url": `https://${DC}.api.mailchimp.com/3.0/lists`,
+  "url": `https://${DC}.api.mailchimp.com/3.0/lists/`,
   "method": "GET",
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `apikey ${MAIL_API_KEY}`
+  }
+}
+
+export const postMemberSettings = {
+  "async": true,
+  "crossDomain": true,
+  "url": `https://${DC}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`,
+  "method": "POST",
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `apikey ${MAIL_API_KEY}`
