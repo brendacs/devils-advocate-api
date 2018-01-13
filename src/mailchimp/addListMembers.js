@@ -24,13 +24,14 @@ const addListMember = () => {
     let partScore = scores[5];
     let voteScore = scores[6];
 
-    econListId = econScore >= 2 ? '0000' : '0000';
-    doveListId = doveScore >= 2 ? '0000' : '0000';
-    socListId = socScore >= 2 ? '0000' : '0000';
-    nationListId = nationScore >= 2 ? '0000' : '0000';
-    partListId = partScore >= 2 ? '0000' : '0000';
-    actionListId = actionScore >= 2 ? '0000' : '0000';
-    voteListId = voteScore >= 2 ? '0000' : '0000';
+    // New Econ Left : New Econ Right
+    econListId = econScore < 2 ? '1484d7fe9a' : '40654271eb';
+    doveListId = doveScore < 2 ? '0000' : '0000';
+    socListId = socScore < 2 ? '0000' : '0000';
+    nationListId = nationScore < 2 ? '0000' : '0000';
+    partListId = partScore < 2 ? '0000' : '0000';
+    actionListId = actionScore < 2 ? '0000' : '0000';
+    voteListId = voteScore < 2 ? '0000' : '0000';
   }
 }
 

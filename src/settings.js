@@ -11,6 +11,8 @@ import {
   voteListId
 } from './mailchimp/getLists.js';
 
+let curr = 'econ';
+
 const FORM_API_KEY = process.env.FORM_API_KEY;
 const FORM_ACCESS_TOKEN = process.env.FORM_ACCESS_TOKEN;
 
@@ -39,6 +41,7 @@ export const getListSettings = {
 }
 
 export const postMemberSettings = {
+  if (curr === 'econ') LIST_ID = econListId;
   "async": true,
   "crossDomain": true,
   "url": `https://${DC}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`,

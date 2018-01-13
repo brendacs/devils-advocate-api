@@ -21,4 +21,4 @@ const postListMember = () => {
   requestAddListMember();
 }
 
-getScore();
+getListData();
