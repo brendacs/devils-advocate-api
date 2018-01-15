@@ -17,6 +17,7 @@
     "express": "~4.15.5",
     "mailchimp-api-js": "^0.1.0",
     "mailchimp-api-v3": "^1.8.0",
-    "request": "^2.83.0"
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
   }
 }

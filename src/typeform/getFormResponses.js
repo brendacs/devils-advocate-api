@@ -2,7 +2,7 @@ import request from 'request';
 import { formSettings } from '../settings.js';
 import { calcScore } from './calcScore.js';
 
-const getFormResponses = (error, data, body) => {
+const getFormResponses = (err, data, body) => {
   let response = JSON.parse(body);
   getLatest(response);
 }

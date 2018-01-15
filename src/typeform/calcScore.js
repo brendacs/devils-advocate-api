@@ -76,7 +76,8 @@ export const calcScore = (latestAnswered) => {
       part = 'nonpartisan';
     }
 
-    vote = voteArr[0];
+    // 'None' accounts for 'Not applicable' option which would be filtered out
+    vote = voteArr[0] ? voteArr[0] : 'None';
     
     scores = [econScore, doveScore, socScore, nationScore, action, part, vote];
     results[email] = scores;

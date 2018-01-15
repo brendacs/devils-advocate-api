@@ -9,16 +9,24 @@ app.listen(3000, () => {
   console.log('Server started');
 });
 
-const getScore = () => {
+export const getScore = () => {
   requestFormResponse();
 }
 
-const getListData = () => {
+export const getListData = () => {
   requestGetListResponse();
 }
 
-const postListMember = () => {
-  requestAddListMember();
+export const postListMember = (getScore, requestAddListMember) => {
+  getScore();
+  setTimeout(function() {
+    requestAddListMember();
+  }, 5000);
 }
 
-getListData();
+// runs on server start
+const defaultToRun = () => {
+  postListMember(getScore, requestAddListMember);
+}
+
+defaultToRun();
