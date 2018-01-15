@@ -8,13 +8,13 @@ import { results } from '../typeform/calcScore.js';
 const MAIL_API_KEY = process.env.MAIL_API_KEY;
 const DC = process.env.DC;
 
-export let econListId;
-export let doveListId;
-export let socListId;
-export let nationListId;
-export let partListId;
-export let actionListId;
-export let voteListId;
+let econListId;
+let doveListId;
+let socListId;
+let nationListId;
+let partListId;
+let actionListId;
+let voteListId;
 
 let subberListIds = {};
 
@@ -60,16 +60,15 @@ const addListMember = (err, data, body) => {
   console.log(body.email_address, body.status);
 }
 
-export let curr;
-export let email;
-
 export const requestAddListMember = () => {
   let subberEmails = Object.keys(results);
+
   console.log(subberEmails);
 
   // for each subber email from results
   for (let i = 0; i < subberEmails.length; i++) {
     let currSubber = subberEmails[i];
+
     mapEmailToIds(currSubber);
 
     console.log(subberListIds);
@@ -77,12 +76,14 @@ export const requestAddListMember = () => {
     // for each list the subber must be added to
     let listIds = subberListIds[currSubber];
     for (let j = 0; j < listIds.length; j++) {
-      let lists = ['econ', 'dove', 'soc', 'nation', 'part', 'action', 'vote'];
-      curr = lists[j];
-      email = currSubber;
+      const lists = ['econ', 'dove', 'soc', 'nation', 'part', 'action', 'vote'];
+      let curr = lists[j];
+      let email = currSubber;
+
       console.log(email);
 
       let LIST_ID;
+
       if (curr === 'econ') LIST_ID = econListId;
       if (curr === 'dove') LIST_ID = doveListId;
       if (curr === 'soc') LIST_ID = socListId;
@@ -91,7 +92,7 @@ export const requestAddListMember = () => {
       if (curr === 'action') LIST_ID = actionListId;
       if (curr === 'vote') LIST_ID = voteListId;
 
-      const postMemberSettings = {
+      let postMemberSettings = {
         'async': true,
         'crossDomain': true,
         'url': `https://${DC}.api.mailchimp.com/3.0/lists/${LIST_ID}/members`,
