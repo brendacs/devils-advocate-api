@@ -7,6 +7,7 @@ const FORM_ACCESS_TOKEN = process.env.FORM_ACCESS_TOKEN;
 const MAIL_API_KEY = process.env.MAIL_API_KEY;
 const DC = process.env.DC;
 
+// typeform get response settings
 export const formSettings = {
   'async': true,
   'crossDomain': true,
@@ -17,6 +18,7 @@ export const formSettings = {
   }
 }
 
+// mailchimp get list settings
 export const getListSettings = {
   'async': true,
   'crossDomain': true,

@@ -1,6 +1,6 @@
 export let results = {};
 
-export const calcScore = (latestAnswered) => {
+export const calcScore = (latestAnsweredItems) => {
 
   /* econ - 1 space suffix
    *   econ govt programs - 1 space prefix
@@ -21,18 +21,18 @@ export const calcScore = (latestAnswered) => {
   let scores;
   let scoreString = '';
 
-  for (let i = 0; i < latestAnswered.length; i++) {
+  for (let i = 0; i < latestAnsweredItems.length; i++) {
     econScore = 0;
     doveScore = 0;
     socScore = 0;
     nationScore = 0;
     let all = [];
 
-    for (let j = 0; j < latestAnswered[i].answers.length; j++) {
-      if (latestAnswered[i].answers[j].choice === undefined) {
-        email = latestAnswered[i].answers[j].email;
+    for (let j = 0; j < latestAnsweredItems[i].answers.length; j++) {
+      if (latestAnsweredItems[i].answers[j].choice === undefined) {
+        email = latestAnsweredItems[i].answers[j].email;
       } else {
-        all.push(latestAnswered[i].answers[j].choice.label);
+        all.push(latestAnsweredItems[i].answers[j].choice.label);
       }
     }
 

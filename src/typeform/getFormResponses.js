@@ -11,7 +11,17 @@ const getLatest = (response) => {
   console.log(response);
   let items = response.items;
   let answeredItems = [];
-  let latestAnswered = [];
+  let latestAnsweredItems = [];
+
+  if (!items) {
+    console.log('No items');
+    return;
+  }
+
+  let today = new Date();
+  let yesterDate = today.getDate() - 1;
+  console.log('yesterday: ', yesterDate);
+
   for (let i = 0; i < items.length; i++) {
     let item = items[i];
 
@@ -19,17 +29,21 @@ const getLatest = (response) => {
     if (item.answers !== null) {
       answeredItems[i] = item;
 
-      // get all items submitted in past 24 hours
-      if (item.submitted_at) {
-        latestAnswered[i] = item;
+      // get latest answered items
+      let dateSubmittedRaw = item.submitted_at;
+      let dateSubmitted = new Date(dateSubmittedRaw);
+      let daySubmitted = dateSubmitted.getDate();
+
+      if (daySubmitted >= yesterDate) {
+        latestAnsweredItems[i] = item;
       }
     }
   }
 
-  console.log(`Total items: ${response.page_count} \n*Answered items: ${answeredItems.length} \n Items within 24hrs: ${latestAnswered.length}`);
-  console.log(answeredItems);
+  console.log(`Total items: ${response.page_count} \n*Answered items: ${answeredItems.length} \n*Latest items: ${latestAnsweredItems.length}`);
+  console.log(latestAnsweredItems);
 
-  calcScore(latestAnswered);
+  calcScore(latestAnsweredItems);
 }
 
 export const requestFormResponse = () => {

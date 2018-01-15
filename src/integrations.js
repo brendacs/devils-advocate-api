@@ -24,9 +24,13 @@ export const postListMember = (getScore, requestAddListMember) => {
   }, 5000);
 }
 
-// runs on server start
+// function to run
 const defaultToRun = () => {
   postListMember(getScore, requestAddListMember);
 }
 
+// runs function every 24 hours
+setInterval(function(){ defaultToRun(); }, 1000*60*60*24);
+
+// run on server start
 defaultToRun();
