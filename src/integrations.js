@@ -2,6 +2,7 @@ import express from 'express';
 import { requestFormResponse } from './typeform/getFormResponses.js';
 import { requestGetListResponse } from './mailchimp/getLists.js';
 import { requestAddListMember } from './mailchimp/addListMembers.js';
+import { requestGetGroupResponse } from './mailchimp/getGroups.js';
 
 const app = express();
 
@@ -24,9 +25,13 @@ export const postListMember = (getScore, requestAddListMember) => {
   }, 5000);
 }
 
+export const getGroupData = () => {
+  requestGetGroupResponse();
+}
+
 // function to run
 const defaultToRun = () => {
-  postListMember(getScore, requestAddListMember);
+  getGroupData();
 }
 
 // runs function every 24 hours

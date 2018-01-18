@@ -18,7 +18,7 @@ let voteListId;
 
 let subberListIds = {};
 
-const mapEmailToIds = (currSubber) => {
+const mapEmailToListIds = (currSubber) => {
   let scores = results[currSubber];
 
   let econScore = scores[0];
@@ -69,7 +69,7 @@ export const requestAddListMember = () => {
   for (let i = 0; i < subberEmails.length; i++) {
     let currSubber = subberEmails[i];
 
-    mapEmailToIds(currSubber);
+    mapEmailToListIds(currSubber);
 
     console.log(subberListIds);
 

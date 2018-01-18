@@ -7,6 +7,10 @@ const FORM_ACCESS_TOKEN = process.env.FORM_ACCESS_TOKEN;
 const MAIL_API_KEY = process.env.MAIL_API_KEY;
 const DC = process.env.DC;
 
+const MASTER_LIST_ID = "0b760e1837";
+const MAIN_CATEGORY_ID = "e12580bfcb";
+const VOTE_CATEGORY_ID = "f76915c767";
+
 // typeform get response settings
 export const formSettings = {
   'async': true,
@@ -23,6 +27,18 @@ export const getListSettings = {
   'async': true,
   'crossDomain': true,
   'url': `https://${DC}.api.mailchimp.com/3.0/lists?count=100`,
+  'method': 'GET',
+  'headers': {
+    'Content-Type': 'application/json',
+    'Authorization': `apikey ${MAIL_API_KEY}`
+  }
+}
+
+// mailchimp get group settings
+export const getGroupSettings = {
+  'async': true,
+  'crossDomain': true,
+  'url': `https://${DC}.api.mailchimp.com/3.0/lists/${MASTER_LIST_ID}/interest-categories/${VOTE_CATEGORY_ID}/interests?count=20`,
   'method': 'GET',
   'headers': {
     'Content-Type': 'application/json',
