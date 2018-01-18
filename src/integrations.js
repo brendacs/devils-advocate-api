@@ -3,6 +3,7 @@ import { requestFormResponse } from './typeform/getFormResponses.js';
 import { requestGetListResponse } from './mailchimp/getLists.js';
 import { requestAddListMember } from './mailchimp/addListMembers.js';
 import { requestGetGroupResponse } from './mailchimp/getGroups.js';
+import { requestAddListMemberWithGroups } from './mailchimp/addGroupsToMembers.js';
 
 const app = express();
 
@@ -29,9 +30,16 @@ export const getGroupData = () => {
   requestGetGroupResponse();
 }
 
+export const postListMemberWithGroups = (getScore, requestAddListMemberWithGroups) => {
+  getScore();
+  setTimeout(function() {
+    requestAddListMemberWithGroups();
+  }, 5000);
+}
+
 // function to run
 const defaultToRun = () => {
-  getGroupData();
+  postListMemberWithGroups(getScore, requestAddListMemberWithGroups);
 }
 
 // runs function every 24 hours
