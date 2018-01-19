@@ -21,7 +21,7 @@ let voteGroupId;
 let subberGroupIds = {};
 
 
-mapEmailToGroupIds = (currSubber) => {
+const mapEmailToGroupIds = (currSubber) => {
   let scores = results[currSubber];
 
   let econScore = scores[0];
@@ -74,7 +74,17 @@ export const requestAddListMemberWithGroups = () => {
 
     console.log(subberGroupIds);
 
+    // get group ids for subber
     let groupIds = subberGroupIds[currSubber];
+    let groups = {
+      [econGroupId]: true,
+      [doveGroupId]: true,
+      [socGroupId]: true,
+      [nationGroupId]: true,
+      [partGroupId]: true,
+      [actionGroupId]: true,
+      [voteGroupId]: true
+    }
 
     // post subber with each group the subber must have
     let postMemberWithGroupsSettings = {
@@ -84,15 +94,7 @@ export const requestAddListMemberWithGroups = () => {
       'json': {
         'email_address': `${email}`,
         'status': 'subscribed',
-        'interests': {
-          `${econGroupId}`: true,
-          `${doveGroupId}`: true,
-          `${socGroupId}`: true,
-          `${nationGroupId}`: true,
-          `${partGroupId}`: true,
-          `${actionGroupId}`: true,
-          `${voteGroupId}`: true
-        }
+        'interests': groups
       },
       'method': 'POST',
       'headers': {

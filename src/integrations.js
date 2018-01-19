@@ -39,7 +39,8 @@ export const postListMemberWithGroups = (getScore, requestAddListMemberWithGroup
 
 // function to run
 const defaultToRun = () => {
-  postListMemberWithGroups(getScore, requestAddListMemberWithGroups);
+  getScore();
+  //postListMemberWithGroups(getScore, requestAddListMemberWithGroups);
 }
 
 // runs function every 24 hours
