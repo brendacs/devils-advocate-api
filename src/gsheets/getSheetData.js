@@ -5,9 +5,7 @@ const getSheetData = (err, data, body) => {
   console.log(body);
 }
 
-const requestGetSheetData = () => {
+export const requestGetSheetData = () => {
   console.log('called');
   request(getSheetSettings, getSheetData);
 }
-
-export default getSheetData;
