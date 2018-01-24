@@ -1,15 +1,23 @@
 import dotenv from 'dotenv';
 dotenv.load();
 
+import google from 'googleapis';
+// import gooogleAuth from 'google-auth-library';
+
 const FORM_API_KEY = process.env.FORM_API_KEY;
 const FORM_ACCESS_TOKEN = process.env.FORM_ACCESS_TOKEN;
 
 const MAIL_API_KEY = process.env.MAIL_API_KEY;
 const DC = process.env.DC;
 
-const MASTER_LIST_ID = "0b760e1837";
-const MAIN_CATEGORY_ID = "e12580bfcb";
-const VOTE_CATEGORY_ID = "f76915c767";
+const MASTER_LIST_ID = '0b760e1837';
+const MAIN_CATEGORY_ID = 'e12580bfcb';
+const VOTE_CATEGORY_ID = 'f76915c767';
+
+const SHEETS_API_KEY = process.env.SHEETS_API_KEY;
+const SHEET_ID = '1JQExqcx6W3ZrcRpn0vAROMY8eTHSWb3qDgl0wNIHCNg';
+const rowNum = 2;
+const range = `A${rowNum}:P${rowNum}`;
 
 // typeform get response settings
 export const formSettings = {
@@ -43,5 +51,19 @@ export const getGroupSettings = {
   'headers': {
     'Content-Type': 'application/json',
     'Authorization': `apikey ${MAIL_API_KEY}`
+  }
+}
+
+// const googleAuth = new googleAuth();
+
+// google sheets get settings
+export const getSheetsSettings = {
+  'async': true,
+  'crossDomain': true,
+  url: `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}`,
+  'method': 'GET',
+  'headers': {
+    'Content-Type': 'application/json',
+    'Authorization': `apikey ${SHEETS_API_KEY}`
   }
 }
