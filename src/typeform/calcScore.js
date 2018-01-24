@@ -1,5 +1,6 @@
 export let results = {};
 
+// @deprecated due to TypeForm v2.0
 export const calcScore = (latestAnsweredItems) => {
 
   /* econ - 1 space suffix

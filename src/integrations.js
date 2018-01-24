@@ -12,7 +12,17 @@ app.listen(3000, () => {
   console.log('Server started');
 });
 
+export const callType = null;
+
+export const getFormData = () => {
+  callType = 'data';
+  requestFormResponse();
+}
+
+// @deprecated due to TypeForm v2.0
 export const getScore = () => {
+  console.log('This function is deprecated since TypeForm v2.0');
+  callType = 'score';
   requestFormResponse();
 }
 
@@ -31,7 +41,9 @@ export const getGroupData = () => {
   requestGetGroupResponse();
 }
 
+// @deprecated due to TypeForm v2.0
 export const postListMemberWithGroups = (getScore, requestAddListMemberWithGroups) => {
+  console.log('This function is deprecated since TypeForm v2.0');
   getScore();
   setTimeout(function() {
     requestAddListMemberWithGroups();
@@ -42,10 +54,12 @@ export const getSheetsData = () => {
   requestGetSheetsData();
 }
 
+export const postGroupedListMember = (getScoreUsingSheets, requestAddListMemberWithGroups) => {
+  console.log('called poster');
+}
+
 // function to run
 const defaultToRun = () => {
-  // getScore();
-  //postListMemberWithGroups(getScore, requestAddListMemberWithGroups);
   getSheetsData();
 }
 
