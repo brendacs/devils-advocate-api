@@ -1,11 +1,11 @@
 import request from 'request';
-import getSheetSettings from '../settings.js';
+import { getSheetsSettings } from '../settings.js';
 
-const getSheetData = (err, data, body) => {
+const getSheetsData = (err, data, body) => {
   console.log(body);
 }
 
-export const requestGetSheetData = () => {
+export const requestGetSheetsData = () => {
   console.log('called');
-  request(getSheetSettings, getSheetData);
+  request(getSheetsSettings, getSheetsData);
 }
