@@ -60,7 +60,7 @@ export const getGroupSettings = {
 export const getSheetsSettings = {
   'async': true,
   'crossDomain': true,
-  url: `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}`,
+  url: `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}?key=${SHEETS_API_KEY}`,
   'method': 'GET',
   'headers': {
     'Content-Type': 'application/json',
