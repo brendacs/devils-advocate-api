@@ -16,7 +16,8 @@ const VOTE_CATEGORY_ID = 'f76915c767';
 
 const SHEETS_API_KEY = process.env.SHEETS_API_KEY;
 const SHEET_ID = '1JQExqcx6W3ZrcRpn0vAROMY8eTHSWb3qDgl0wNIHCNg';
-const rowNum = 2;
+
+import { rowNum } from './gsheets/getSheetData.js';
 const range = `A${rowNum}:P${rowNum}`;
 
 // typeform get response settings

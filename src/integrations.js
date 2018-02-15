@@ -4,7 +4,7 @@ import { requestGetListResponse } from './mailchimp/getLists.js';
 import { requestAddListMember } from './mailchimp/addListMembers.js';
 import { requestGetGroupResponse } from './mailchimp/getGroups.js';
 import { requestAddListMemberWithGroups } from './mailchimp/addGroupsToMembers.js';
-import { requestGetSheetsData } from './gsheets/getSheetData.js';
+import { requestGetSheetsData, loopSheetRows } from './gsheets/getSheetData.js';
 
 const app = express();
 
@@ -60,7 +60,7 @@ export const postGroupedListMember = (getScoreUsingSheets, requestAddListMemberW
 
 // function to run
 const defaultToRun = () => {
-  getSheetsData();
+  loopSheetRows();
 }
 
 // runs function every 24 hours
