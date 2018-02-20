@@ -1,5 +1,6 @@
 import express from 'express';
 import { requestFormResponse } from './typeform/getFormResponses.js';
+import { calcScore } from './typeform/calcScore.js';
 import { requestGetListResponse } from './mailchimp/getLists.js';
 import { requestAddListMember } from './mailchimp/addListMembers.js';
 import { requestGetGroupResponse } from './mailchimp/getGroups.js';
@@ -12,18 +13,21 @@ app.listen(3000, () => {
   console.log('Server started');
 });
 
-export const callType = null;
+export let callType = null;
 
 export const getFormData = () => {
   callType = 'data';
   requestFormResponse();
 }
 
-// @deprecated due to TypeForm v2.0
+export const getSheetsData = () => {
+  callType = 'data';
+  requestGetSheetsData();
+}
+
 export const getScore = () => {
-  console.log('This function is deprecated since TypeForm v2.0');
   callType = 'score';
-  requestFormResponse();
+  requestGetSheetsData();
 }
 
 export const getListData = () => {
@@ -50,17 +54,13 @@ export const postListMemberWithGroups = (getScore, requestAddListMemberWithGroup
   }, 5000);
 }
 
-export const getSheetsData = () => {
-  requestGetSheetsData();
-}
-
 export const postGroupedListMember = (getScoreUsingSheets, requestAddListMemberWithGroups) => {
   console.log('called poster');
 }
 
 // function to run
 const defaultToRun = () => {
-  requestGetSheetsData();
+  getScore();
 }
 
 // runs function every 24 hours
