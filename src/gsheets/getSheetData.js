@@ -1,22 +1,14 @@
 import request from 'request';
 import { getSheetsSettings } from '../settings.js';
 
-export let rowNum = 2;
-
-let values = 0;
+export let results = null;
 
 const getSheetsData = (err, data, body) => {
   let response = JSON.parse(body);
-  values = response.values;
+  let results = response.values;
+  console.log(results);
 }
 
 export const requestGetSheetsData = () => {
   request(getSheetsSettings, getSheetsData);
-}
-
-export const loopSheetRows = () => {
-  while (values !== undefined) {
-    requestGetSheetsData();
-    rowNum += 1;
-  }
 }

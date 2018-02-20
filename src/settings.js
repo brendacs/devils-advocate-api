@@ -16,9 +16,7 @@ const VOTE_CATEGORY_ID = 'f76915c767';
 
 const SHEETS_API_KEY = process.env.SHEETS_API_KEY;
 const SHEET_ID = '1JQExqcx6W3ZrcRpn0vAROMY8eTHSWb3qDgl0wNIHCNg';
-
-import { rowNum } from './gsheets/getSheetData.js';
-const range = `A${rowNum}:P${rowNum}`;
+const range = 'A:P';
 
 // typeform get response settings
 export const formSettings = {
@@ -29,7 +27,7 @@ export const formSettings = {
   'headers': {
     'Authorization': `bearer ${FORM_ACCESS_TOKEN}`
   }
-}
+};
 
 // mailchimp get list settings
 export const getListSettings = {
@@ -41,7 +39,7 @@ export const getListSettings = {
     'Content-Type': 'application/json',
     'Authorization': `apikey ${MAIL_API_KEY}`
   }
-}
+};
 
 // mailchimp get group settings
 export const getGroupSettings = {
@@ -53,18 +51,16 @@ export const getGroupSettings = {
     'Content-Type': 'application/json',
     'Authorization': `apikey ${MAIL_API_KEY}`
   }
-}
+};
 
-// const googleAuth = new googleAuth();
-
-// google sheets get settings
+// google get sheets settings
 export const getSheetsSettings = {
   'async': true,
   'crossDomain': true,
-  url: `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}?key=${SHEETS_API_KEY}`,
+  'url': `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}?key=${SHEETS_API_KEY}`,
   'method': 'GET',
   'headers': {
     'Content-Type': 'application/json',
     'Authorization': `apikey ${SHEETS_API_KEY}`
   }
-}
+};
