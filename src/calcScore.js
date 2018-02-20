@@ -2,17 +2,18 @@ export let scoreMap = {};
 
 export const calcScore = (results) => {
   let email;
-  let econScore = 0;
-  let doveScore = 0;
-  let socScore = 0;
-  let nationScore = 0;
-  let partisan;
-  let autonomy;
-  let votePref;
   let scores;
   let scoreString = '';
 
   for (let i = 1; i < results.length; i++) {
+    let econScore = 0;
+    let doveScore = 0;
+    let socScore = 0;
+    let nationScore = 0;
+    let partisan;
+    let autonomy;
+    let votePref;
+    
     let currResponse = results[i];
     email = currResponse[15];
 
