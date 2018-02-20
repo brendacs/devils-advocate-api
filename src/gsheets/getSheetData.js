@@ -1,7 +1,7 @@
 import request from 'request';
 import { getSheetsSettings } from '../settings.js';
 import { callType } from '../integrations.js';
-import { calcScore } from '../typeform/calcScore.js';
+import { calcScore } from '../calcScore.js';
 
 export let results = null;
 

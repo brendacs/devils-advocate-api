@@ -1,6 +1,6 @@
 import express from 'express';
 import { requestFormResponse } from './typeform/getFormResponses.js';
-import { calcScore } from './typeform/calcScore.js';
+import { calcScore } from './calcScore.js';
 import { requestGetListResponse } from './mailchimp/getLists.js';
 import { requestAddListMember } from './mailchimp/addListMembers.js';
 import { requestGetGroupResponse } from './mailchimp/getGroups.js';
@@ -34,33 +34,24 @@ export const getListData = () => {
   requestGetListResponse();
 }
 
-export const postListMember = (getScore, requestAddListMember) => {
-  getScore();
-  setTimeout(function() {
-    requestAddListMember();
-  }, 5000);
-}
-
 export const getGroupData = () => {
   requestGetGroupResponse();
 }
 
-// @deprecated due to TypeForm v2.0
-export const postListMemberWithGroups = (getScore, requestAddListMemberWithGroups) => {
-  console.log('This function is deprecated since TypeForm v2.0');
+export const postListMemberWithGroups = () => {
   getScore();
   setTimeout(function() {
     requestAddListMemberWithGroups();
   }, 5000);
 }
 
-export const postGroupedListMember = (getScoreUsingSheets, requestAddListMemberWithGroups) => {
+export const postGroupedListMember = (getScore, requestAddListMemberWithGroups) => {
   console.log('called poster');
 }
 
 // function to run
 const defaultToRun = () => {
-  getScore();
+  postListMemberWithGroups();
 }
 
 // runs function every 24 hours

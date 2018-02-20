@@ -45,7 +45,7 @@ export const getListSettings = {
 export const getGroupSettings = {
   'async': true,
   'crossDomain': true,
-  'url': `https://${DC}.api.mailchimp.com/3.0/lists/${MASTER_LIST_ID}/interest-categories/${VOTE_CATEGORY_ID}/interests?count=20`,
+  'url': `https://${DC}.api.mailchimp.com/3.0/lists/${MASTER_LIST_ID}/interest-categories/${MAIN_CATEGORY_ID}/interests?count=20`,
   'method': 'GET',
   'headers': {
     'Content-Type': 'application/json',

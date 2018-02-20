@@ -1,6 +1,6 @@
 import request from 'request';
 import { formSettings } from '../settings.js';
-import { calcScore } from './calcScore.js';
+import { calcScore } from '../calcScore.js';
 import { callType } from '../integrations.js';
 
 const getFormResponses = (err, data, body) => {
