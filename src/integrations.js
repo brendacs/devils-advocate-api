@@ -2,9 +2,8 @@ import express from 'express';
 import { requestFormResponse } from './typeform/getFormResponses.js';
 import { calcScore } from './calcScore.js';
 import { requestGetListResponse } from './mailchimp/getLists.js';
-import { requestAddListMember } from './mailchimp/addListMembers.js';
 import { requestGetGroupResponse } from './mailchimp/getGroups.js';
-import { requestAddListMemberWithGroups } from './mailchimp/addGroupsToMembers.js';
+import { requestAddListMemberWithGroups } from './mailchimp/addListMembersWithGroups.js';
 import { requestGetSheetsData } from './gsheets/getSheetData.js';
 
 const app = express();
@@ -16,7 +15,6 @@ app.listen(3000, () => {
 export let callType = null;
 
 export const getFormData = () => {
-  callType = 'data';
   requestFormResponse();
 }
 
@@ -43,10 +41,6 @@ export const postListMemberWithGroups = () => {
   setTimeout(function() {
     requestAddListMemberWithGroups();
   }, 5000);
-}
-
-export const postGroupedListMember = (getScore, requestAddListMemberWithGroups) => {
-  console.log('called poster');
 }
 
 // function to run

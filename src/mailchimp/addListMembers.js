@@ -18,48 +18,7 @@ let voteListId;
 
 let subberListIds = {};
 
-const mapEmailToListIds = (currSubber) => {
-  let scores = results[currSubber];
-
-  let econScore = scores[0];
-  let doveScore = scores[1];
-  let socScore = scores[2];
-  let nationScore = scores[3];
-  let action = scores[4];
-  let part = scores[5];
-  let vote = scores[6];
-
-  // New Econ Left : New Econ Right
-  econListId = econScore < 2 ? '1484d7fe9a' : '40654271eb';
-  // New Doves List : New Hawks List
-  doveListId = doveScore < 2 ? '5885f8b2f2' : '17b42670d1';
-  // New Classical Liberals : New Identitarian Left
-  socListId = socScore < 2 ? 'fe5cc88ff9' : '79820d1bd3';
-  // New Internationalists : New Nationalists
-  nationListId = nationScore < 2 ? '265fdb1e86' : '3e87d6a0e1';
-  // New Partisans : New Not Partisans
-  partListId = part === 'partisan' ? '57d8cc78fd' : '7724693fb0';
-  // New Victimhood : New Autonomy
-  actionListId = action === 'victimhood' ? '1c42e32b15' : 'a4caae71d8';
-  // Voting preferences
-  if (vote === 'Libertarians') {
-    voteListId = '1796d62eb0';
-  } else if (vote === 'Democrats') {
-    voteListId = 'f471052749';
-  } else if (vote === 'Republicans') {
-    voteListId = 'ba30c5b8c8';
-  } else if (vote === 'None') {
-    voteListId = '4badf9aef7';
-  }
-
-  // map current subber to all list ids associated with scores
-  subberListIds[currSubber] = [econListId, doveListId, socListId, nationListId, partListId, actionListId, voteListId];
-}
-
-const addListMember = (err, data, body) => {
-  console.log(body.email_address, body.status);
-}
-
+// @deprecated due to add with group functionality
 export const requestAddListMember = () => {
   let subberEmails = Object.keys(results);
 
@@ -111,4 +70,46 @@ export const requestAddListMember = () => {
       request(postMemberSettings, addListMember);
     }
   }
+}
+
+const mapEmailToListIds = (currSubber) => {
+  let scores = results[currSubber];
+
+  let econScore = scores[0];
+  let doveScore = scores[1];
+  let socScore = scores[2];
+  let nationScore = scores[3];
+  let action = scores[4];
+  let part = scores[5];
+  let vote = scores[6];
+
+  // New Econ Left : New Econ Right
+  econListId = econScore < 2 ? '1484d7fe9a' : '40654271eb';
+  // New Doves List : New Hawks List
+  doveListId = doveScore < 2 ? '5885f8b2f2' : '17b42670d1';
+  // New Classical Liberals : New Identitarian Left
+  socListId = socScore < 2 ? 'fe5cc88ff9' : '79820d1bd3';
+  // New Internationalists : New Nationalists
+  nationListId = nationScore < 2 ? '265fdb1e86' : '3e87d6a0e1';
+  // New Partisans : New Not Partisans
+  partListId = part === 'partisan' ? '57d8cc78fd' : '7724693fb0';
+  // New Victimhood : New Autonomy
+  actionListId = action === 'victimhood' ? '1c42e32b15' : 'a4caae71d8';
+  // Voting preferences
+  if (vote === 'Libertarians') {
+    voteListId = '1796d62eb0';
+  } else if (vote === 'Democrats') {
+    voteListId = 'f471052749';
+  } else if (vote === 'Republicans') {
+    voteListId = 'ba30c5b8c8';
+  } else if (vote === 'None') {
+    voteListId = '4badf9aef7';
+  }
+
+  // map current subber to all list ids associated with scores
+  subberListIds[currSubber] = [econListId, doveListId, socListId, nationListId, partListId, actionListId, voteListId];
+}
+
+const addListMember = (err, data, body) => {
+  console.log(body.email_address, body.status);
 }

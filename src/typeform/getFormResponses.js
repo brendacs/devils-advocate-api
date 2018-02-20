@@ -3,6 +3,8 @@ import { formSettings } from '../settings.js';
 import { calcScore } from '../calcScore.js';
 import { callType } from '../integrations.js';
 
+
+// @deprecated due to TypeForm v2.0
 const getFormResponses = (err, data, body) => {
   let response = JSON.parse(body);
   getLatest(response);
@@ -41,13 +43,8 @@ const getLatest = (response) => {
     }
   }
 
-  // @deprecated due to TypeForm v2.0
-  if (callType === 'score')  {
-    calcScore(latestAnsweredItems);
-  } else {
-    console.log(`Total items: ${response.page_count} \n*Answered items: ${answeredItems.length} \n*Latest items: ${latestAnsweredItems.length}`);
-    console.log(latestAnsweredItems);
-  }
+  console.log(`Total items: ${response.page_count} \n*Answered items: ${answeredItems.length} \n*Latest items: ${latestAnsweredItems.length}`);
+  console.log(latestAnsweredItems);
 }
 
 export const requestFormResponse = () => {
