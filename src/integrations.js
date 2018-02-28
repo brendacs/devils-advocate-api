@@ -48,8 +48,8 @@ const defaultToRun = () => {
   postListMemberWithGroups();
 }
 
-// runs function every 24 hours
-setInterval(function(){ defaultToRun(); }, 1000*60*60*24);
+// runs function every 1 hour
+setInterval(function(){ defaultToRun(); }, 1000*60*60*1);
 
 // run on server start
 defaultToRun();
