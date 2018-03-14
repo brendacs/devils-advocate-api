@@ -23,17 +23,17 @@ export const calcScore = (results) => {
     let govtPrograms = currResponse[4];
 
     econScore += (freeTrade.indexOf('beneficial') != -1) ? 1 : 0;
-    econScore += (minimumWage == 'Agree') ? 0 : 1;
-    econScore += (govtPrograms == 'Agree') ? 1 : 0;
+    econScore += (minimumWage.indexOf('Agree') != -1) ? 0 : 1;
+    econScore += (govtPrograms.indexOf('Agree') != -1) ? 1 : 0;
 
     // dove
     let tortureTerror = currResponse[1];
     let militaryIntervention = currResponse[7];
     let intelAccess = currResponse[11];
 
-    doveScore += (tortureTerror == 'Agree') ? 1 : 0;
-    doveScore += (militaryIntervention == 'Agree') ? 1 : 0;
-    doveScore += (intelAccess == 'Agree') ? 1 : 0;
+    doveScore += (tortureTerror.indexOf('Agree') != -1) ? 1 : 0;
+    doveScore += (militaryIntervention.indexOf('Agree') != -1) ? 1 : 0;
+    doveScore += (intelAccess.indexOf('Agree') != -1) ? 1 : 0;
 
     // social
     let hateSpeech = currResponse[2];
@@ -42,30 +42,30 @@ export const calcScore = (results) => {
     let payGap = currResponse[12];
     let univStudents = currResponse[6];
 
-    socScore += (hateSpeech == 'Agree') ? 1 : 0;
+    socScore += (hateSpeech.indexOf('Agree') != -1) ? 1 : 0;
     socScore += (racismIs.indexOf('embedded') != -1) ? 1 : 0;
-    socScore += (businessRefuse == 'Agree') ? 0 : 1;
-    socScore += (payGap == 'Agree') ? 0 : 1;
-    socScore += (univStudents == 'Agree') ? 1 : 0;
+    socScore += (businessRefuse.indexOf('Agree') != -1) ? 0 : 1;
+    socScore += (payGap.indexOf('Agree') != -1) ? 0 : 1;
+    socScore += (univStudents.indexOf('Agree') != -1) ? 1 : 0;
 
     // nation
     let raiseTaxes = currResponse[3];
     let immigrantAssim = currResponse[5];
     let citizenObligation = currResponse[13];
 
-    nationScore += (raiseTaxes == 'Agree') ? 1 : 0;
-    nationScore += (immigrantAssim == 'Agree') ? 1 : 0;
-    nationScore += (citizenObligation == 'Agree') ? 1 : 0;
+    nationScore += (raiseTaxes.indexOf('Agree') != -1) ? 1 : 0;
+    nationScore += (immigrantAssim.indexOf('Agree') != -1) ? 1 : 0;
+    nationScore += (citizenObligation.indexOf('Agree') != -1) ? 1 : 0;
 
     // action
     let action = currResponse[14];
 
-    autonomy = action.indexOf('external') == -1 ? true : false;
+    autonomy = (action.indexOf('External') != -1) ? false : true;
 
     // part
     let disappoint = currResponse[15];
 
-    partisan = (disappoint == 'Agree') ? true : false;
+    partisan = (disappoint.indexOf('Agree') != -1) ? true : false;
 
     // vote
     let vote = currResponse[16];
