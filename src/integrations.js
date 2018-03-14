@@ -45,7 +45,6 @@ export const postListMemberWithGroups = () => {
 
 // function to run
 const defaultToRun = () => {
-  getGroupData();
   postListMemberWithGroups();
 }
 
