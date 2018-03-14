@@ -81,7 +81,7 @@ const mapEmailToGroupIds = (currSubber) => {
   // Doves Group : Hawks Group
   doveGroupId = doveScore < 2 ? '32f34f9dfe' : '501a04b50f';
   // Classical Liberals : Identitarian Left
-  socGroupId = socScore < 2 ? 'e1a126285a' : '471f6db897';
+  socGroupId = socScore < 3 ? 'e1a126285a' : '471f6db897';
   // Internationalist : Nationalist
   nationGroupId = nationScore < 2 ? 'bbe81cd4be' : '7400ba857b';
   // Partisans : Not Partisans
