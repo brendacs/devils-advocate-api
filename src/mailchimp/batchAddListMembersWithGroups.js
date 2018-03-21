@@ -60,7 +60,10 @@ export const requestBatchAddListMembersWithGroups = () => {
     'async': true,
     'crossDomain': true,
     'url': `https://${DC}.api.mailchimp.com/3.0/lists/${MASTER_LIST_ID}`,
-    'members': membersWithProps,
+    'json': {
+      'update_existing': true,
+      'members': membersWithProps
+    },
     'method': 'POST',
     'headers': {
       'Content-Type': 'application/json',
@@ -101,7 +104,7 @@ const mapEmailToGroupIds = (currSubber) => {
   } else if (vote === 'Democrats') {
     voteGroupId = 'ab1f508c6f';
   } else if (vote === 'Republicans') {
-    voteGroupId = 'fe6b5518478';
+    voteGroupId = 'fe6b551847';
   } else if (vote === 'Neither, Other, or Not Applicable') {
     voteGroupId = '3f59af2f25';
   }
@@ -111,5 +114,5 @@ const mapEmailToGroupIds = (currSubber) => {
 }
 
 const batchAddListMembersWithGroups = (err, data, body) => {
-  console.log(body, body.status, body.new_members, body.total_created, body.updated_members, body.total_updated, err);
+  console.log(body.new_members, body.total_created, body.total_updated, body, err);
 }
