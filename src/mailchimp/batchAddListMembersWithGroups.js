@@ -18,6 +18,7 @@ let actionGroupId;
 let voteGroupId;
 
 let subberGroupIds = {};
+let membersWithProps = [];
 
 /**
  * Post up to 500 members at once to list with groups
@@ -45,28 +46,30 @@ export const requestBatchAddListMembersWithGroups = () => {
       [voteGroupId]: true
     }
 
-    // post up  to 500 subbers at once as an array of objects
-    let postMemberWithGroupsSettings = {
-      'async': true,
-      'crossDomain': true,
-      'url': `https://${DC}.api.mailchimp.com/3.0/lists/${MASTER_LIST_ID}`,
-      'members': [
-        {
-          'email_address': `${currSubber}`,
-          'status': 'subscribed',
-          'interests': groups
-        }
-      ],
-      'method': 'POST',
-      'headers': {
-        'Content-Type': 'application/json',
-        'Authorization': `apikey ${MAIL_API_KEY}`
-      }
-    }
-
-    // make request to post
-    request(postMemberWithGroupsSettings, addListMemberWithGroups);
+    membersWithProps.push({
+      'email_address': `${currSubber}`,
+      'status': 'subscribed',
+      'interests': groups
+    });
   }
+
+  console.log(membersWithProps);
+
+  // post up  to 500 subbers at once as an array of objects
+  let postAllMembersWithGroupsSettings = {
+    'async': true,
+    'crossDomain': true,
+    'url': `https://${DC}.api.mailchimp.com/3.0/lists/${MASTER_LIST_ID}`,
+    'members': membersWithProps,
+    'method': 'POST',
+    'headers': {
+      'Content-Type': 'application/json',
+      'Authorization': `apikey ${MAIL_API_KEY}`
+    }
+  }
+
+  // make request to post
+  request(postAllMembersWithGroupsSettings, batchAddListMembersWithGroups);
 }
 
 const mapEmailToGroupIds = (currSubber) => {
@@ -107,6 +110,6 @@ const mapEmailToGroupIds = (currSubber) => {
   subberGroupIds[currSubber] = [econGroupId, doveGroupId, socGroupId, nationGroupId, partGroupId, actionGroupId, voteGroupId];
 }
 
-const bactchAddListMembersWithGroups = (err, data, body) => {
-  console.log(body.email_address, body.status, err);
+const batchAddListMembersWithGroups = (err, data, body) => {
+  console.log(body, body.status, body.new_members, body.total_created, body.updated_members, body.total_updated, err);
 }

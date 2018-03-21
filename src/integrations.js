@@ -4,6 +4,7 @@ import { calcScore } from './calcScore.js';
 import { requestGetListResponse } from './mailchimp/getLists.js';
 import { requestGetGroupResponse } from './mailchimp/getGroups.js';
 import { requestAddListMemberWithGroups } from './mailchimp/addListMembersWithGroups.js';
+import { requestBatchAddListMembersWithGroups } from './mailchimp/batchAddListMembersWithGroups.js';
 import { requestGetSheetsData } from './gsheets/getSheetData.js';
 
 const app = express();
@@ -43,9 +44,16 @@ export const postListMemberWithGroups = () => {
   }, 5000);
 }
 
+export const postAllListMembersWithGroups = () => {
+  getScore();
+  setTimeout(function() {
+    requestBatchAddListMembersWithGroups();
+  }, 5000);
+}
+
 // function to run
 const defaultToRun = () => {
-  postListMemberWithGroups();
+  postAllListMembersWithGroups();
 }
 
 // runs function every 1 hour
