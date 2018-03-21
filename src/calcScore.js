@@ -1,5 +1,9 @@
 export let scoreMap = {};
 
+/**
+ * Calculate scores from Google Sheets answers
+ */
+
 export const calcScore = (results) => {
   let email;
   let scores;

@@ -18,7 +18,10 @@ let voteListId;
 
 let subberListIds = {};
 
-// @deprecated due to add with group functionality
+/**
+ * Add members to different lists based on interest bucket
+ * @deprecated, no longer using separate lists or TypeForm 1.0
+ */
 export const requestAddListMember = () => {
   let subberEmails = Object.keys(results);
 

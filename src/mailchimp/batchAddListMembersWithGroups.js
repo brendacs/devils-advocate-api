@@ -20,9 +20,9 @@ let voteGroupId;
 let subberGroupIds = {};
 
 /**
- * Post members to list one at a time with groups
+ * Post up to 500 members at once to list with groups
  */
-export const requestAddListMemberWithGroups = () => {
+export const requestBatchAddListMembersWithGroups = () => {
   let subberEmails = Object.keys(scoreMap);
 
   // for each subber email from score map
@@ -45,16 +45,18 @@ export const requestAddListMemberWithGroups = () => {
       [voteGroupId]: true
     }
 
-    // post subber with each group the subber must have
+    // post up  to 500 subbers at once as an array of objects
     let postMemberWithGroupsSettings = {
       'async': true,
       'crossDomain': true,
-      'url': `https://${DC}.api.mailchimp.com/3.0/lists/${MASTER_LIST_ID}/members`,
-      'json': {
-        'email_address': `${currSubber}`,
-        'status': 'subscribed',
-        'interests': groups
-      },
+      'url': `https://${DC}.api.mailchimp.com/3.0/lists/${MASTER_LIST_ID}`,
+      'members': [
+        {
+          'email_address': `${currSubber}`,
+          'status': 'subscribed',
+          'interests': groups
+        }
+      ],
       'method': 'POST',
       'headers': {
         'Content-Type': 'application/json',
@@ -105,6 +107,6 @@ const mapEmailToGroupIds = (currSubber) => {
   subberGroupIds[currSubber] = [econGroupId, doveGroupId, socGroupId, nationGroupId, partGroupId, actionGroupId, voteGroupId];
 }
 
-const addListMemberWithGroups = (err, data, body) => {
+const bactchAddListMembersWithGroups = (err, data, body) => {
   console.log(body.email_address, body.status, err);
 }
