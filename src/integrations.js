@@ -57,7 +57,7 @@ const defaultToRun = () => {
 }
 
 // runs function every 30 minutes
-setInterval(function(){ defaultToRun(); }, 1000*60*30);
+setInterval(function(){ defaultToRun(); }, 1000*60*15);
 
 // run on server start
 defaultToRun();

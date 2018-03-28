@@ -115,4 +115,8 @@ const mapEmailToGroupIds = (currSubber) => {
 
 const batchAddListMembersWithGroups = (err, data, body) => {
   console.log(body.new_members, body.total_created, body.total_updated, body, err);
+
+  // reset maps and arrays
+  subberGroupIds = {};
+  membersWithProps = [];
 }
