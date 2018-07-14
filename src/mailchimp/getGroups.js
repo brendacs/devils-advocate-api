@@ -1,5 +1,5 @@
 import request from 'request';
-import { getGroupSettings } from '../settings.js';
+import { getGroupSettings } from '../settings';
 
 /**
  * Get group IDs and information

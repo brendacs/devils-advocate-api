@@ -1,3 +1,5 @@
+import { DEBUG } from './constants';
+
 export let scoreMap = {};
 
 /**
@@ -81,6 +83,6 @@ export const calcScore = (results) => {
     scoreString += `${email}\nEconomic score: ${econScore}\nHawk/dove score: ${doveScore}\nSocial score: ${socScore}\nNational score: ${nationScore}\nAutonomy: ${autonomy}\nVotes for: ${votePref}\nPartisan: ${partisan}\n\n`
   }
 
-  console.log(scoreString);
-  console.log(scoreMap);
+  if (DEBUG) console.log(scoreString);
+  if (DEBUG) console.log(scoreMap);
 }

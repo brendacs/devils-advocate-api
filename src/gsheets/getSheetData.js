@@ -1,7 +1,8 @@
 import request from 'request';
-import { getSheetsSettings } from '../settings.js';
-import { callType } from '../integrations.js';
-import { calcScore } from '../calcScore.js';
+import { DEBUG } from '../constants';
+import { getSheetsSettings } from '../settings';
+import { callType } from '../integrations';
+import { calcScore } from '../calcScore';
 
 export let results = null;
 
@@ -12,7 +13,7 @@ const getSheetsData = (err, data, body) => {
   if (callType == 'score') {
     calcScore(results);
   } else {
-    console.log(results);
+    if (DEBUG) console.log(results);
   }
 }
 

@@ -1,11 +1,11 @@
 import express from 'express';
-import { requestFormResponse } from './typeform/getFormResponses.js';
-import { calcScore } from './calcScore.js';
-import { requestGetListResponse } from './mailchimp/getLists.js';
-import { requestGetGroupResponse } from './mailchimp/getGroups.js';
-import { requestAddListMemberWithGroups } from './mailchimp/addListMembersWithGroups.js';
-import { requestBatchAddListMembersWithGroups } from './mailchimp/batchAddListMembersWithGroups.js';
-import { requestGetSheetsData } from './gsheets/getSheetData.js';
+import { requestFormResponse } from './typeform/getFormResponses';
+import { calcScore } from './calcScore';
+import { requestGetListResponse } from './mailchimp/getLists';
+import { requestGetGroupResponse } from './mailchimp/getGroups';
+import { requestAddListMemberWithGroups } from './mailchimp/addListMembersWithGroups';
+import { requestBatchAddListMembersWithGroups } from './mailchimp/batchAddListMembersWithGroups';
+import { requestGetSheetsData } from './gsheets/getSheetData';
 
 const app = express();
 
@@ -56,7 +56,7 @@ const defaultToRun = () => {
   postAllListMembersWithGroups();
 }
 
-// runs function every 30 minutes
+// runs function every 15 minutes
 setInterval(function(){ defaultToRun(); }, 1000*60*15);
 
 // run on server start

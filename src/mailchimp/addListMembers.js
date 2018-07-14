@@ -1,12 +1,7 @@
-import dotenv from 'dotenv';
-dotenv.load();
-
 import request from 'request';
-import { postMemberSettings } from '../settings.js';
-import { results } from '../typeform/calcScore.js';
-
-const MAIL_API_KEY = process.env.MAIL_API_KEY;
-const DC = process.env.DC;
+import { DEBUG, MAIL_API_KEY, DC } from '../constants';
+import { postMemberSettings } from '../settings';
+import { results } from '../typeform/calcScore';
 
 let econListId;
 let doveListId;
@@ -25,7 +20,7 @@ let subberListIds = {};
 export const requestAddListMember = () => {
   let subberEmails = Object.keys(results);
 
-  console.log(subberEmails);
+  if(DEBUG) console.log(subberEmails);
 
   // for each subber email from results
   for (let i = 0; i < subberEmails.length; i++) {
@@ -33,7 +28,7 @@ export const requestAddListMember = () => {
 
     mapEmailToListIds(currSubber);
 
-    console.log(subberListIds);
+    if (DEBUG) console.log(subberListIds);
 
     // for each list the subber must be added to
     let listIds = subberListIds[currSubber];
@@ -42,7 +37,7 @@ export const requestAddListMember = () => {
       let curr = lists[j];
       let email = currSubber;
 
-      console.log(email);
+      if (DEBUG) console.log(email);
 
       let LIST_ID;
 
@@ -114,5 +109,5 @@ const mapEmailToListIds = (currSubber) => {
 }
 
 const addListMember = (err, data, body) => {
-  console.log(body.email_address, body.status);
+  if (DEBUG) console.log(body.email_address, body.status);
 }

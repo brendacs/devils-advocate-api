@@ -1,22 +1,18 @@
-import dotenv from 'dotenv';
-dotenv.load();
-
 import google from 'googleapis';
 // import gooogleAuth from 'google-auth-library';
-
-const FORM_API_KEY = process.env.FORM_API_KEY;
-const FORM_ACCESS_TOKEN = process.env.FORM_ACCESS_TOKEN;
-
-const MAIL_API_KEY = process.env.MAIL_API_KEY;
-const DC = process.env.DC;
-
-const MASTER_LIST_ID = '0b760e1837';
-const MAIN_CATEGORY_ID = 'e12580bfcb';
-const VOTE_CATEGORY_ID = 'f76915c767';
-
-const SHEETS_API_KEY = process.env.SHEETS_API_KEY;
-const SHEET_ID = '15DRO8MUqjM2Xx8cU0S5lyd8kiKf8NLf_QYVG2bFhtdA';
-const range = 'A:R';
+import {
+  DEBUG,
+  FORM_API_KEY,
+  FORM_ACCESS_TOKEN,
+  MAIL_API_KEY,
+  DC,
+  MASTER_LIST_ID,
+  MAIN_CATEGORY_ID,
+  VOTE_CATEGORY_ID,
+  SHEETS_API_KEY,
+  SHEET_ID,
+  RANGE
+} from './constants';
 
 // typeform get response settings
 export const formSettings = {
@@ -57,7 +53,7 @@ export const getGroupSettings = {
 export const getSheetsSettings = {
   'async': true,
   'crossDomain': true,
-  'url': `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${range}?key=${SHEETS_API_KEY}`,
+  'url': `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${SHEETS_API_KEY}`,
   'method': 'GET',
   'headers': {
     'Content-Type': 'application/json',

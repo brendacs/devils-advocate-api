@@ -12,5 +12,5 @@ Integrations were done using JavaScript (ES6), Node, and Express.
 
 1. Use `git clone` to download this repo.
 2. Type `npm install` to install dependencies.
-3. Run `npm build` to compile files with Babel.
+3. Run `npm run build` to compile files with Babel.
 4. Use `npm start` to start the program.

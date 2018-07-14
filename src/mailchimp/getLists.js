@@ -1,5 +1,5 @@
 import request from 'request';
-import { getListSettings } from '../settings.js';
+import { getListSettings } from '../settings';
 
 /**
  * Get list IDs and information

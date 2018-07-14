@@ -1,13 +1,11 @@
-import dotenv from 'dotenv';
-dotenv.load();
-
 import request from 'request';
-import { scoreMap } from '../calcScore.js';
-
-const MAIL_API_KEY = process.env.MAIL_API_KEY;
-const DC = process.env.DC;
-
-const MASTER_LIST_ID = '0b760e1837';
+import {
+  DEBUG,
+  MAIL_API_KEY,
+  DC,
+  MASTER_LIST_ID
+} from '../constants';
+import { scoreMap } from '../calcScore';
 
 let econGroupId;
 let doveGroupId;
@@ -114,7 +112,7 @@ const mapEmailToGroupIds = (currSubber) => {
 }
 
 const batchAddListMembersWithGroups = (err, data, body) => {
-  console.log(body.new_members, body.total_created, body.total_updated, body, err);
+  if (DEBUG) console.log(body.new_members, body.total_created, body.total_updated, body, err);
 
   // reset maps and arrays
   subberGroupIds = {};
