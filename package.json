@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "babel src -d lib"
+    "build": "babel src -d lib",
+    "start": "node lib/integrations.js"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
