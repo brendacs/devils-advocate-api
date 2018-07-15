@@ -1,4 +1,5 @@
 import request from 'request';
+import { DEBUG } from '../constants';
 import { getListSettings } from '../settings';
 
 /**
@@ -6,7 +7,7 @@ import { getListSettings } from '../settings';
  */
 const getListResponses = (error, data, body) => {
   let response = JSON.parse(body);
-  console.log(response);
+  if (DEBUG) console.log(response);
 }
 
 export const requestGetListResponse = () => {

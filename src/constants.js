@@ -1,7 +1,7 @@
 import dotenv from 'dotenv';
 dotenv.load();
 
-export const DEBUG = process.env.DEBUG;
+export const DEBUG = false;
 export const FORM_API_KEY = process.env.FORM_API_KEY;
 export const FORM_ACCESS_TOKEN = process.env.FORM_ACCESS_TOKEN;
 export const MAIL_API_KEY = process.env.MAIL_API_KEY;

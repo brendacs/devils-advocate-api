@@ -30,7 +30,7 @@ export const requestBatchAddListMembersWithGroups = () => {
 
     mapEmailToGroupIds(currSubber);
 
-    console.log(subberGroupIds);
+    if (DEBUG) console.log(subberGroupIds);
 
     // get group ids for subber
     let groupIds = subberGroupIds[currSubber];
@@ -51,7 +51,7 @@ export const requestBatchAddListMembersWithGroups = () => {
     });
   }
 
-  console.log(membersWithProps);
+  if (DEBUG) console.log(membersWithProps);
 
   // post up  to 500 subbers at once as an array of objects
   let postAllMembersWithGroupsSettings = {

@@ -1,7 +1,8 @@
 import request from 'request';
-import { formSettings } from '../settings.js';
-import { calcScore } from '../calcScore.js';
-import { callType } from '../integrations.js';
+import { DEBUG } from '../constants';
+import { formSettings } from '../settings';
+import { calcScore } from '../calcScore';
+import { callType } from '../integrations';
 
 
 // @deprecated due to TypeForm v2.0
@@ -11,19 +12,19 @@ const getFormResponses = (err, data, body) => {
 }
 
 const getLatest = (response) => {
-  console.log(response);
+  if (DEBUG) console.log(response);
   let items = response.items;
   let answeredItems = [];
   let latestAnsweredItems = [];
 
   if (!items) {
-    console.log('No items');
+    if (DEBUG) console.log('No items');
     return;
   }
 
   let today = new Date();
   let yesterDate = today.getDate() - 1;
-  console.log('yesterday: ', yesterDate);
+  if (DEBUG) console.log('yesterday: ', yesterDate);
 
   for (let i = 0; i < items.length; i++) {
     let item = items[i];
@@ -43,8 +44,8 @@ const getLatest = (response) => {
     }
   }
 
-  console.log(`Total items: ${response.page_count} \n*Answered items: ${answeredItems.length} \n*Latest items: ${latestAnsweredItems.length}`);
-  console.log(latestAnsweredItems);
+  if (DEBUG) console.log(`Total items: ${response.page_count} \n*Answered items: ${answeredItems.length} \n*Latest items: ${latestAnsweredItems.length}`);
+  if (DEBUG) console.log(latestAnsweredItems);
 }
 
 export const requestFormResponse = () => {
