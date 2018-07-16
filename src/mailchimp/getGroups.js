@@ -1,6 +1,6 @@
 import request from 'request';
-import { DEBUG } from '../constants';
-import { getGroupSettings } from '../settings';
+import { DEBUG } from '../utils/constants';
+import { getGroupSettings } from '../utils/settings';
 
 /**
  * Get group IDs and information

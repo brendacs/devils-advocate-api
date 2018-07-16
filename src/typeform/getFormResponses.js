@@ -1,7 +1,7 @@
 import request from 'request';
-import { DEBUG } from '../constants';
-import { formSettings } from '../settings';
-import { calcScore } from '../calcScore';
+import { DEBUG } from '../utils/constants';
+import { formSettings } from '../utils/settings';
+import { calcScore } from '../utils/calcScore';
 import { callType } from '../integrations';
 
 

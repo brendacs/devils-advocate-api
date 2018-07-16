@@ -1,6 +1,6 @@
 import express from 'express';
 import { requestFormResponse } from './typeform/getFormResponses';
-import { calcScore } from './calcScore';
+import { calcScore } from './utils/calcScore';
 import { requestGetListResponse } from './mailchimp/getLists';
 import { requestGetGroupResponse } from './mailchimp/getGroups';
 import { requestAddListMemberWithGroups } from './mailchimp/addListMembersWithGroups';
@@ -15,6 +15,7 @@ app.listen(3000, () => {
 
 export let callType = null;
 
+// @deprecated since Typeform v2.0
 export const getFormData = () => {
   requestFormResponse();
 }
@@ -37,6 +38,7 @@ export const getGroupData = () => {
   requestGetGroupResponse();
 }
 
+// @deprecated, use batch operation instead
 export const postListMemberWithGroups = () => {
   getScore();
   setTimeout(function() {

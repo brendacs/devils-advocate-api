@@ -1,8 +1,8 @@
 import request from 'request';
-import { DEBUG } from '../constants';
-import { getSheetsSettings } from '../settings';
+import { DEBUG } from '../utils/constants';
+import { getSheetsSettings } from '../utils/settings';
 import { callType } from '../integrations';
-import { calcScore } from '../calcScore';
+import { calcScore } from '../utils/calcScore';
 
 export let results = null;
 

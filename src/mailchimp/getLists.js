@@ -1,6 +1,6 @@
 import request from 'request';
-import { DEBUG } from '../constants';
-import { getListSettings } from '../settings';
+import { DEBUG } from '../utils/constants';
+import { getListSettings } from '../utils/settings';
 
 /**
  * Get list IDs and information

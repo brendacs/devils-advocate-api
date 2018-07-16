@@ -4,8 +4,8 @@ import {
   MAIL_API_KEY,
   DC,
   MASTER_LIST_ID
-} from '../constants';
-import { scoreMap } from '../calcScore';
+} from '../utils/constants';
+import { scoreMap } from '../utils/calcScore';
 
 let econGroupId;
 let doveGroupId;
