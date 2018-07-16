@@ -1,24 +1,25 @@
 import express from 'express';
-import { requestFormResponse } from './typeform/getFormResponses';
+
+// required
 import { calcScore } from './utils/calcScore';
-import { requestGetListResponse } from './mailchimp/getLists';
-import { requestGetGroupResponse } from './mailchimp/getGroups';
-import { requestAddListMemberWithGroups } from './mailchimp/addListMembersWithGroups';
-import { requestBatchAddListMembersWithGroups } from './mailchimp/batchAddListMembersWithGroups';
 import { requestGetSheetsData } from './gsheets/getSheetData';
+import { requestMembers } from './mailchimp/getMembers';
+import { requestMemberCount } from './mailchimp/getMemberCount';
+import { requestBatchAddListMembersWithGroups } from './mailchimp/batchAddListMembersWithGroups';
+
+// unused, but for utility or future use
+import { requestFormData } from './typeform/getFormResponses';
+import { requestLists } from './mailchimp/getLists';
+import { requestGroups } from './mailchimp/getGroups';
+import { requestAddListMemberWithGroups } from './mailchimp/addListMembersWithGroups';
 
 const app = express();
 
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log('Server started');
 });
 
 export let callType = null;
-
-// @deprecated since Typeform v2.0
-export const getFormData = () => {
-  requestFormResponse();
-}
 
 export const getSheetsData = () => {
   callType = 'data';
@@ -30,22 +31,6 @@ export const getScore = () => {
   requestGetSheetsData();
 }
 
-export const getListData = () => {
-  requestGetListResponse();
-}
-
-export const getGroupData = () => {
-  requestGetGroupResponse();
-}
-
-// @deprecated, use batch operation instead
-export const postListMemberWithGroups = () => {
-  getScore();
-  setTimeout(function() {
-    requestAddListMemberWithGroups();
-  }, 5000);
-}
-
 export const postAllListMembersWithGroups = () => {
   getScore();
   setTimeout(function() {
@@ -55,7 +40,10 @@ export const postAllListMembersWithGroups = () => {
 
 // function to run
 const defaultToRun = () => {
-  postAllListMembersWithGroups();
+  requestMembers();
+  setTimeout(function() {
+    postAllListMembersWithGroups();
+  }, 5000);
 }
 
 // runs function every 15 minutes

@@ -1,4 +1,5 @@
 import { DEBUG } from './constants';
+import { memberEmails } from '../mailchimp/getMembers';
 
 export let scoreMap = {};
 
@@ -12,6 +13,13 @@ export const calcScore = (results) => {
   let scoreString = '';
 
   for (let i = 1; i < results.length; i++) {
+    let currResponse = results[i];
+
+    email = currResponse[17];
+    if (email in memberEmails) {
+      continue; // if email already on list, skip below work
+    }
+
     let econScore = 0;
     let doveScore = 0;
     let socScore = 0;
@@ -19,9 +27,6 @@ export const calcScore = (results) => {
     let partisan;
     let autonomy;
     let votePref;
-    
-    let currResponse = results[i];
-    email = currResponse[17];
 
     // econ
     let freeTrade = currResponse[0];

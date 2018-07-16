@@ -5,11 +5,11 @@ import { getGroupSettings } from '../utils/settings';
 /**
  * Get group IDs and information
  */
-const getGroupResponses = (error, data, body) => {
+const getGroups = (error, data, body) => {
   let response = JSON.parse(body);
   if (DEBUG) console.log(response);
 }
 
-export const requestGetGroupResponse = () => {
-  request(getGroupSettings, getGroupResponses);
+export const requestGroups = () => {
+  request(getGroupSettings, getGroups);
 }

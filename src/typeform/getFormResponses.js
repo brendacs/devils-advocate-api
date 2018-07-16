@@ -6,7 +6,7 @@ import { callType } from '../integrations';
 
 
 // @deprecated due to TypeForm v2.0
-const getFormResponses = (err, data, body) => {
+const getFormData = (err, data, body) => {
   let response = JSON.parse(body);
   getLatest(response);
 }
@@ -48,6 +48,6 @@ const getLatest = (response) => {
   if (DEBUG) console.log(latestAnsweredItems);
 }
 
-export const requestFormResponse = () => {
-  request(formSettings, getFormResponses);
+export const requestFormData = () => {
+  request(formSettings, getFormData);
 }

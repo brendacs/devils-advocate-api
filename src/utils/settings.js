@@ -37,6 +37,18 @@ export const getListSettings = {
   }
 };
 
+// mailchimp get list by list id
+export const getListByIdSettings = {
+  'async': true,
+  'crossDomain': true,
+  'url': `https://${DC}.api.mailchimp.com/3.0/lists/${MASTER_LIST_ID}`,
+  'method': 'GET',
+  'headers': {
+    'Content-Type': 'application/json',
+    'Authorization': `apikey ${MAIL_API_KEY}`
+  }
+};
+
 // mailchimp get group settings
 export const getGroupSettings = {
   'async': true,
@@ -47,6 +59,20 @@ export const getGroupSettings = {
     'Content-Type': 'application/json',
     'Authorization': `apikey ${MAIL_API_KEY}`
   }
+};
+
+// mailchimp get members settings
+export const getMembersSettings = (offset, count) => {
+  return ({
+    'async': true,
+    'crossDomain': true,
+    'url': `https://${DC}.api.mailchimp.com/3.0/lists/${MASTER_LIST_ID}/members?fields=members.email_address&offset=${offset}&count=${count}`,
+    'method': 'GET',
+    'headers': {
+      'Content-Type': 'application/json',
+      'Authorization': `apikey ${MAIL_API_KEY}`
+    }
+  });
 };
 
 // google get sheets settings

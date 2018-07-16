@@ -5,11 +5,11 @@ import { getListSettings } from '../utils/settings';
 /**
  * Get list IDs and information
  */
-const getListResponses = (error, data, body) => {
+const getLists = (error, data, body) => {
   let response = JSON.parse(body);
   if (DEBUG) console.log(response);
 }
 
-export const requestGetListResponse = () => {
-  request(getListSettings, getListResponses);
+export const requestLists = () => {
+  request(getListSettings, getLists);
 }
